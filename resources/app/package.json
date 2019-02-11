@@ -1,0 +1,23 @@
+{
+  "name": "browseryfy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron .",
+    "package-mac" : "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-macOs",
+    "package-win": "electron-packager . browseryfy --overwrite  --platform=win32 --arch=x64  --prune=true --out=multi-service-2 --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"Electron Tutorial App\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "uniq": "^1.0.1"
+  },
+  "devDependencies": {
+    "buffer": "^5.2.1",
+    "electron": "^4.0.4",
+    "electron-packager": "^13.0.1"
+  }
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<script src="./request.js"></script>
+<script src="./buffer.js"></script>
+
+<body style="background-color: #0D8476;">
+    <div id="printer">
+        <h1 style="color: #373735;">Printing</h1>
+        <textarea id="ta" cols="30" rows="10"></textarea>
+        <br>
+        <button onclick="service()">Print</button>
+    </div>
+    <div id="vfd" style="margin-top: 70px;">
+        <h1 style="color: #373735;">VFD</h1>
+        <input type="text" placeholder="max 10 char">
+        <br>
+        <input type="text" placeholder="max 10 char">
+        <br>
+        <button>Show Display</button>
+        <button onclick="alert('underconstruction')">Just Test API</button>
+    </div>
+</body>
+
+<script>
+    const request = require('request')
+    const Buffer = require('buffer').Buffer
+    function service(){
+        // console.log(request)
+        let words = document.getElementById('ta').value
+        if (!words) {
+            alert('kosong euy')
+        } else {
+            console.log(Buffer)
+            let result  = Buffer.from(words)
+            console.log(result)
+            console.log(`sing nang nduwur iku buffer e : ${result}`)
+            let format = {}
+            format.printCodes = result
+            request.post({url : 'http://localhost:8888/print',data : format}, function(err, httpResponse, body){
+                if(err){
+                    console.log(err + `  Buffer not send to printing service`)
+                    
+                } else {
+                    console.log('Upload successful!  Server responded with:', body)
+                    
+                }
+            })
+        }
+    }
+</script>
+
+</html>
